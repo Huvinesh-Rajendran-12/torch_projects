@@ -99,7 +99,7 @@ def main():
     x_test , y_test = next(iter(test_loader))
 
     model = CustomModel()
-    optimizer = 0.001  # Using SGD optimizer for simplicity
+    optimizer = 0.01  # Using SGD optimizer for simplicity
     num_epochs = 1000
 
     # Convert data to PyTorch tensors if not already
@@ -120,20 +120,7 @@ def main():
 
         print(f"Epoch {epoch+1}/{num_epochs}, Loss: {total_loss / (len(x_train) / 64)}")
 
-    # Plotting a sample prediction
-    # model.eval()  # Set model to evaluation mode
-    # with torch.no_grad():  # Disable gradient computation for inference
-    #     sample_image = x_train[0:1]  # First image for simplicity
-    #     sample_label = y_train[0:1]
-    #     logits = model(sample_image)
-    #     prediction = torch.argmax(logits, dim=1)
-    #     true_label = sample_label
-
-    # # Assuming x_train is normalized to [0, 1] or similar for visualization
-    # plt.imshow(sample_image[0, 0].cpu().numpy(), cmap='gray')  # Assuming channel-first format
-    # plt.title(f"Predicted: {prediction.item()}, True: {true_label.item()}")
-    # plt.show()
-
+    torch.save(model, "models/mnist.pt")
 
 if __name__ == "__main__":
     main()
