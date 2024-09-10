@@ -1,12 +1,9 @@
-from activation import ReLU
-from layers import Convolutional, Reshape
 from loss import cross_entropy_loss
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
-import torch.optim as optim
 
 class CustomModel(nn.Module):
     def __init__(self):
